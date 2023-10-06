@@ -19,7 +19,7 @@ app.use("/allocations", allocationRoutes);
 app.use("/employees", employeeRoutes);
 
 app.get("/", (req, res) => {
-    res.send("Global Resource Management App");
+    res.send("Air Wingman App");
 });
 
 app.listen(process.env.PORT || 3000, () => {

@@ -2,21 +2,26 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
-import EmployeePage from "./pages/EmployeePage";
-import OverviewAllocationPage from "./pages/OverviewAllocationPage";
+import AirQualityPage from "./pages/AirQualityPage";
+import RecommendationPage from "./pages/RecommendationPage";
+import FeedbackPage from "./pages/FeedbackPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
     return (
         <Router>
             <Routes>
                 <Route exact path="/" element={<LoginPage />} />
-                <Route path="/main" element={<HomePage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/employee" element={<EmployeePage />} />
-                <Route path="/overview" element={<OverviewAllocationPage />} />
+                <Route path="/airquality" element={<AirQualityPage />} />
+                <Route
+                    path="/recommendation"
+                    element={<RecommendationPage />}
+                />
+                <Route path="/feedback" element={<FeedbackPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
             </Routes>
         </Router>
     );

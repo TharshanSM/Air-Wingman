@@ -18,37 +18,49 @@ function Sidebar({ active }) {
 
                 <li className="nav-item">
                     <Link
-                        to="/overview"
+                        to="/airquality"
                         className={`nav-link ${
-                            active === "overview" ? "" : "collapsed"
+                            active === "airquality" ? "" : "collapsed"
                         }`}
                     >
                         <i className="bi bi-grid" />
-                        <span>Overview</span>
+                        <span>Air Quality</span>
                     </Link>
                 </li>
 
                 <li className="nav-item">
                     <Link
-                        to="/main"
+                        to="/recommendation"
                         className={`nav-link ${
-                            active === "main" ? "" : "collapsed"
+                            active === "recommendation" ? "" : "collapsed"
                         }`}
                     >
                         <i className="bi bi-grid" />
-                        <span>Schedule</span>
+                        <span>Recommendations</span>
                     </Link>
                 </li>
 
                 <li className="nav-item">
                     <Link
-                        to="/employee"
+                        to="/feedback"
                         className={`nav-link ${
-                            active === "employee" ? "" : "collapsed"
+                            active === "feedback" ? "" : "collapsed"
                         }`}
                     >
                         <i className="bi bi-grid" />
-                        <span>Employee Summary</span>
+                        <span>Feedbacks</span>
+                    </Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link
+                        to="/profile"
+                        className={`nav-link ${
+                            active === "profile" ? "" : "collapsed"
+                        }`}
+                    >
+                        <i className="bi bi-grid" />
+                        <span>Profile</span>
                     </Link>
                 </li>
             </ul>
