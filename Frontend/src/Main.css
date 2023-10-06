@@ -1,0 +1,25 @@
+table {
+    white-space: nowrap;
+}
+
+.table > thead {
+    /* vertical-align: text-top; */
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+}
+
+.exception {
+    position: sticky;
+    left: 0;
+}
+
+.second {
+    position: sticky;
+    left: 140px;
+}
+
+.table-responsive {
+    overflow-y: auto;
+    height: 400px;
+}
