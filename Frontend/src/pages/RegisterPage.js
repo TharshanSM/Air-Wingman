@@ -1,42 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const LoginPage = () => {
-    let navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [usernameError, setUsernameError] = useState(false);
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-        console.log(username, password);
-
-        if (username.trim() === "") {
-            setUsernameError(true);
-        }
-
-        // Validation
-        if (username.trim() === "Admin" && password.trim() === "Admin123") {
-            navigate("/dashboard", { state: { role: "admin" } });
-        } else if (
-            username.trim() === "John" &&
-            password.trim() === "John123"
-        ) {
-            navigate("/dashboard", { state: { role: "emp" } });
-        } else {
-            alert("Invalid Username/Password");
-        }
-    };
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
-        setUsernameError(false);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
+const RegisterPage = () => {
     return (
         <>
             <div className="container">
@@ -60,18 +24,54 @@ const LoginPage = () => {
                                     <div className="card-body">
                                         <div className="pt-4 pb-2">
                                             <h5 className="card-title text-center pb-0 fs-4">
-                                                Login to Your Account
+                                                Create an Account
                                             </h5>
                                             <p className="text-center small">
-                                                Enter your username &amp;
-                                                password to login
+                                                Enter your personal details to
+                                                create account
                                             </p>
                                         </div>
                                         <form
                                             className="row g-3 needs-validation"
                                             noValidate=""
-                                            onSubmit={handleFormSubmit}
                                         >
+                                            <div className="col-12">
+                                                <label
+                                                    htmlFor="yourName"
+                                                    className="form-label"
+                                                >
+                                                    Your Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    className="form-control"
+                                                    id="yourName"
+                                                    required=""
+                                                />
+                                                <div className="invalid-feedback">
+                                                    Please, enter your name!
+                                                </div>
+                                            </div>
+                                            <div className="col-12">
+                                                <label
+                                                    htmlFor="yourEmail"
+                                                    className="form-label"
+                                                >
+                                                    Your Email
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    className="form-control"
+                                                    id="yourEmail"
+                                                    required=""
+                                                />
+                                                <div className="invalid-feedback">
+                                                    Please enter a valid Email
+                                                    adddress!
+                                                </div>
+                                            </div>
                                             <div className="col-12">
                                                 <label
                                                     htmlFor="yourUsername"
@@ -92,21 +92,11 @@ const LoginPage = () => {
                                                         className="form-control"
                                                         id="yourUsername"
                                                         required=""
-                                                        value={username}
-                                                        onChange={
-                                                            handleUsernameChange
-                                                        }
                                                     />
-                                                    {usernameError && (
-                                                        <div className="invalid-feedback">
-                                                            Please enter your
-                                                            username.
-                                                        </div>
-                                                    )}
-                                                    {/* <div className="invalid-feedback">
-                                                        Please enter your
+                                                    <div className="invalid-feedback">
+                                                        Please choose a
                                                         username.
-                                                    </div> */}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-12">
@@ -122,31 +112,35 @@ const LoginPage = () => {
                                                     className="form-control"
                                                     id="yourPassword"
                                                     required=""
-                                                    value={password}
-                                                    onChange={
-                                                        handlePasswordChange
-                                                    }
                                                 />
-
-                                                {/* <div className="invalid-feedback">
+                                                <div className="invalid-feedback">
                                                     Please enter your password!
-                                                </div> */}
+                                                </div>
                                             </div>
                                             <div className="col-12">
                                                 <div className="form-check">
                                                     <input
                                                         className="form-check-input"
+                                                        name="terms"
                                                         type="checkbox"
-                                                        name="remember"
-                                                        defaultValue="true"
-                                                        id="rememberMe"
+                                                        defaultValue=""
+                                                        id="acceptTerms"
+                                                        required=""
                                                     />
                                                     <label
                                                         className="form-check-label"
-                                                        htmlFor="rememberMe"
+                                                        htmlFor="acceptTerms"
                                                     >
-                                                        Remember me
+                                                        I agree and accept the
+                                                        <Link to="">
+                                                            {" "}
+                                                            terms and conditions
+                                                        </Link>
                                                     </label>
+                                                    <div className="invalid-feedback">
+                                                        You must agree before
+                                                        submitting.
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-12">
@@ -154,15 +148,13 @@ const LoginPage = () => {
                                                     className="btn btn-primary w-100"
                                                     type="submit"
                                                 >
-                                                    Login
+                                                    Create Account
                                                 </button>
                                             </div>
                                             <div className="col-12">
                                                 <p className="small mb-0">
-                                                    Don't have account?
-                                                    <Link to="/register">
-                                                        Create an account
-                                                    </Link>
+                                                    Already have an account?
+                                                    <Link to="/">Log in</Link>
                                                 </p>
                                             </div>
                                         </form>
@@ -177,4 +169,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

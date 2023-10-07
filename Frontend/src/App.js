@@ -8,6 +8,7 @@ import AirQualityPage from "./pages/AirQualityPage";
 import RecommendationPage from "./pages/RecommendationPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import ProfilePage from "./pages/ProfilePage";
+import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                 />
                 <Route path="/feedback" element={<FeedbackPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/register" element={<RegisterPage />} />
             </Routes>
         </Router>
     );
