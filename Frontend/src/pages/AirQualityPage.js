@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import CardComponent from "../components/CardComponent";
 
 const AirQualityPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -130,16 +131,12 @@ const AirQualityPage = () => {
                     </div>
                 </div>
                 {selectedCountry && (
-                    <div className="card card-body mt-3 pt-3 col">
+                    <div className="mt-3 pt-3 col">
                         <div>
-                            <p>Selected Country - {selectedCountry.label}</p>
-                            <p>Country Latitute - {selectedCountry.latitude}</p>
-                            <p>
-                                Country Longtitute - {selectedCountry.longitude}
-                            </p>
-                            <p className="aqi-value">
-                                Air Quality Index - {aqiValue}
-                            </p>
+                            <CardComponent
+                                country={selectedCountry.label}
+                                aqivalue={aqiValue}
+                            ></CardComponent>
                         </div>
                     </div>
                 )}
