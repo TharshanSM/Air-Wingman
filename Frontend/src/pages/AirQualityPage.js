@@ -73,9 +73,17 @@ const AirQualityPage = () => {
         });
 
         await handleGetAQIQuality(so2, no2, o3, co, pm25, pm10);
+        console.log("AirData", airData);
     };
 
-    console.log(airData);
+    // console.log(
+    //     "Lat/Long",
+    //     selectedCountry.latitude,
+    //     selectedCountry.longitude
+    // );
+    //
+    // console.log("AQI", aqiValue);
+
     return (
         <body className={isSidebarOpen ? "toggle-sidebar" : ""}>
             <header

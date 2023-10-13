@@ -27,6 +27,7 @@ const CardComponent = ({ country, aqivalue }) => {
                     variant="top"
                     src="https://res.cloudinary.com/dvnxc9nsf/image/upload/v1697129342/NC%20Apps/Blue_Simple_LinkedIn_Banner_x9bngs.png"
                 />
+
                 <Card.Title>
                     Air Quality Status Report For {country}{" "}
                 </Card.Title>

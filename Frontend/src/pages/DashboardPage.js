@@ -43,6 +43,113 @@ const DashboardPage = () => {
                         </ol>
                     </nav>
                 </div>
+
+                <div
+                    id="carouselExampleInterval"
+                    className="carousel slide mb-4"
+                    data-bs-ride="carousel"
+                >
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img
+                                src="dashboard_a.png"
+                                className="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div className="carousel-item">
+                            <img
+                                src="dashboard_b.png"
+                                className="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div className="carousel-item">
+                            <img
+                                src="dashboard_c.png"
+                                className="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                    </div>
+                    <button
+                        className="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            className="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        />
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        className="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            className="carousel-control-next-icon"
+                            aria-hidden="true"
+                        />
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <section className="status">
+                    <div className="row">
+                        <div className="col">
+                            <div className="card info-card sales-card">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Total User Count
+                                    </h5>
+                                    <div className="d-flex align-items-center">
+                                        <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i className="bi bi-activity" />
+                                        </div>
+                                        <div className="ps-3">
+                                            <h6>20</h6>
+                                            <span className="text-success small pt-1 fw-bold">
+                                                2
+                                            </span>
+                                            <span className="text-muted small pt-2 ps-1">
+                                                Today
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card info-card revenue-card">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Country With High Air Pollution
+                                        <span> | This Year</span>
+                                    </h5>
+                                    <div className="d-flex align-items-center">
+                                        <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i className="bi bi-columns-gap" />
+                                        </div>
+                                        <div className="ps-3">
+                                            <h6>India</h6>
+                                            <span className="text-success small pt-1 fw-bold">
+                                                AQI
+                                            </span>
+                                            <span className="text-muted small pt-2 ps-1">
+                                                189
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="chart"></section>
             </main>
             <Footer></Footer>
         </body>
