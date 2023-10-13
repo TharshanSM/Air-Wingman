@@ -5,7 +5,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import AirQualityPage from "./pages/AirQualityPage";
-import RecommendationPage from "./pages/RecommendationPage";
+import SafetyMeasurePage from "./pages/SafetyMeasure";
 import FeedbackPage from "./pages/FeedbackPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -17,10 +17,7 @@ const App = () => {
                 <Route exact path="/" element={<LoginPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/airquality" element={<AirQualityPage />} />
-                <Route
-                    path="/recommendation"
-                    element={<RecommendationPage />}
-                />
+                <Route path="/safety-measure" element={<SafetyMeasurePage />} />
                 <Route path="/feedback" element={<FeedbackPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/register" element={<RegisterPage />} />
