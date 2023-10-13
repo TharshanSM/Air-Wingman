@@ -1,10 +1,89 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import axios from "axios";
+
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import CardComponent from "../components/CardComponent";
 
 const AirQualityPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [countryOptions, setCountryOptions] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState(null);
+    const [airData, setAirData] = useState(null);
+    const [aqiValue, setAqiValue] = useState(null);
+
+    useEffect(() => {
+        const fetchCountries = async () => {
+            const response = await axios.get(
+                "https://restcountries.com/v3.1/all"
+            );
+            const data = response.data;
+
+            const countryOptions = data.map((country) => ({
+                value: country.cca3,
+                label: country.name.common,
+                latitude: country.latlng[0],
+                longitude: country.latlng[1],
+            }));
+
+            setCountryOptions(countryOptions);
+        };
+
+        fetchCountries();
+    }, []);
+
+    const handleGetAQIQuality = async (so2, no2, o3, co, pm25, pm10) => {
+        const response = await axios.post("http://localhost:3000/aqi/predict", {
+            SO2: so2,
+            NO2: no2,
+            O3: o3,
+            CO: co,
+            PM25: pm25,
+            PM10: pm10,
+        });
+
+        const aqiQualityData = response.data;
+        setAqiValue(aqiQualityData.predictions[0][0]);
+    };
+
+    const handleOnChange = async (selectedOption) => {
+        setSelectedCountry(selectedOption);
+
+        const response = await axios.get(
+            `http://api.openweathermap.org/data/2.5/air_pollution?lat=${selectedOption.latitude}&lon=${selectedOption.longitude}&appid=515feb20d83f656ee0a2bfa9016b585e`
+        );
+        const data = response.data;
+
+        const so2 = data.list[0].components.so2;
+        const no2 = data.list[0].components.no2;
+        const o3 = data.list[0].components.o3;
+        const co = data.list[0].components.co;
+        const pm25 = data.list[0].components.pm2_5;
+        const pm10 = data.list[0].components.pm10;
+
+        setAirData({
+            so2,
+            no2,
+            o3,
+            co,
+            pm25,
+            pm10,
+        });
+
+        await handleGetAQIQuality(so2, no2, o3, co, pm25, pm10);
+        console.log("AirData", airData);
+    };
+
+    // console.log(
+    //     "Lat/Long",
+    //     selectedCountry.latitude,
+    //     selectedCountry.longitude
+    // );
+    //
+    // console.log("AQI", aqiValue);
+
     return (
         <body className={isSidebarOpen ? "toggle-sidebar" : ""}>
             <header
@@ -43,6 +122,32 @@ const AirQualityPage = () => {
                         </ol>
                     </nav>
                 </div>
+                <div>
+                    <div className="d-flex">
+                        <div className="pt-3 ps-1 col">
+                            <Select
+                                isClearable={true}
+                                placeholder={
+                                    <span className="bi bi-compass-fill">
+                                        {"  "}Select Country.....
+                                    </span>
+                                }
+                                options={countryOptions}
+                                onChange={handleOnChange}
+                            ></Select>
+                        </div>
+                    </div>
+                </div>
+                {selectedCountry && (
+                    <div className="mt-3 pt-3 col">
+                        <div>
+                            <CardComponent
+                                country={selectedCountry.label}
+                                aqivalue={aqiValue}
+                            ></CardComponent>
+                        </div>
+                    </div>
+                )}
             </main>
             <Footer></Footer>
         </body>

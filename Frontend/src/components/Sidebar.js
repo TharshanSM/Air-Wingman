@@ -30,13 +30,13 @@ function Sidebar({ active }) {
 
                 <li className="nav-item">
                     <Link
-                        to="/recommendation"
+                        to="/safety-measure"
                         className={`nav-link ${
-                            active === "recommendation" ? "" : "collapsed"
+                            active === "safety-measure" ? "" : "collapsed"
                         }`}
                     >
                         <i className="bi bi-grid" />
-                        <span>Recommendations</span>
+                        <span>Safety Measure</span>
                     </Link>
                 </li>
 
