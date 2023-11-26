@@ -6,8 +6,6 @@ const cors = require("cors");
 const connect = require("./db");
 const app = express();
 
-const allocationRoutes = require("./routes/allocations");
-const employeeRoutes = require("./routes/employees");
 const airQualityPredictionRoute = require("./routes/airQualityPrediction");
 
 //  Connect to Database
@@ -16,8 +14,6 @@ connect();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/allocations", allocationRoutes);
-app.use("/employees", employeeRoutes);
 app.use("/aqi", airQualityPredictionRoute);
 
 app.get("/", (req, res) => {
