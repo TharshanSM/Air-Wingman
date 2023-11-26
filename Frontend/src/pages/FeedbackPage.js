@@ -43,6 +43,75 @@ const FeedbackPage = () => {
                         </ol>
                     </nav>
                 </div>
+                <div className="row">
+                    <div className="col">
+                        <div>
+                            <div className="card card-body mt-3 pt-3">
+                                <form>
+                                    <div className="row mb-3">
+                                        <label
+                                            htmlFor="inputText"
+                                            className="col-sm-4 col-form-label"
+                                        >
+                                            Name
+                                        </label>
+                                        <div className="col-sm-8">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="exampleDataList"
+                                                placeholder="Type Your Name Here..."
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row mb-3">
+                                        <label
+                                            htmlFor="inputText"
+                                            className="col-sm-4 col-form-label"
+                                        >
+                                            Subject
+                                        </label>
+                                        <div className="col-sm-8">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="exampleDataList"
+                                                placeholder="Type Your Subject Here..."
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row mb-3">
+                                        <label
+                                            htmlFor="inputText"
+                                            className="col-sm-4 col-form-label"
+                                        >
+                                            Feedback
+                                        </label>
+                                        <div className="col-sm-8">
+                                            <textarea
+                                                className="form-control"
+                                                placeholder="Type Your Feedback Here..."
+                                            ></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-3">
+                                        <span className="col-sm-4 col-form-label"></span>
+                                        <div className="col-sm-auto">
+                                            <button
+                                                type="submit"
+                                                className="btn btn-primary"
+                                                id="submitbutton"
+                                            >
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
             <Footer></Footer>
         </body>
