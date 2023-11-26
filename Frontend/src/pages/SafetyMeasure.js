@@ -4,15 +4,15 @@ import Select from "react-select";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import SafetyMeasureComponent from "../components/SafetyMeasureComponent";
 
 const rangeOptions = [
     { value: 1, label: "Good" },
     { value: 2, label: "Moderate" },
     { value: 3, label: "Slightly Unhealthy" },
-    { value: 4, label: "Michael Hartstein" },
-    { value: 5, label: "Unhealthy" },
-    { value: 6, label: "Very Unhealthy" },
-    { value: 7, label: "Hazardous" },
+    { value: 4, label: "Unhealthy" },
+    { value: 5, label: "Very Unhealthy" },
+    { value: 6, label: "Hazardous" },
 ];
 
 const SafetyMeasurePage = () => {
@@ -63,7 +63,6 @@ const SafetyMeasurePage = () => {
                     </nav>
                 </div>
 
-                {/* Employee Overview */}
                 <div>
                     <Select
                         isClearable={true}
@@ -76,12 +75,11 @@ const SafetyMeasurePage = () => {
                         onChange={handleOnChange}
                     ></Select>
                     {selectedRange && (
-                        <div className="row mt-3">
-                            <div className="col-lg-6">
-                                <div className="card mb-4"></div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="card mb-4"></div>
+                        <div className="mt-3 pt-3 col">
+                            <div>
+                                <SafetyMeasureComponent
+                                    range={selectedRange.label}
+                                ></SafetyMeasureComponent>
                             </div>
                         </div>
                     )}

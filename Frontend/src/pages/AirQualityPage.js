@@ -45,7 +45,7 @@ const AirQualityPage = () => {
         });
 
         const aqiQualityData = response.data;
-        setAqiValue(aqiQualityData.predictions[0][0]);
+        setAqiValue(aqiQualityData.predictions[0][0] / 10);
     };
 
     const handleOnChange = async (selectedOption) => {
@@ -81,8 +81,8 @@ const AirQualityPage = () => {
     //     selectedCountry.latitude,
     //     selectedCountry.longitude
     // );
-    //
-    // console.log("AQI", aqiValue);
+
+    console.log("AQI", aqiValue);
 
     return (
         <body className={isSidebarOpen ? "toggle-sidebar" : ""}>
