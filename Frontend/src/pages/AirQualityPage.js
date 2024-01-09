@@ -11,6 +11,9 @@ const AirQualityPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [countryOptions, setCountryOptions] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
+
     const [airData, setAirData] = useState(null);
     const [aqiValue, setAqiValue] = useState(null);
 
@@ -45,11 +48,13 @@ const AirQualityPage = () => {
         });
 
         const aqiQualityData = response.data;
-        setAqiValue(aqiQualityData.predictions[0][0] / 10);
+        setAqiValue(Math.round(aqiQualityData.predictions[0][0] / 10));
     };
 
     const handleOnChange = async (selectedOption) => {
         setSelectedCountry(selectedOption);
+        setLatitude(selectedOption.latitude);
+        setLongitude(selectedOption.longitude);
 
         const response = await axios.get(
             `http://api.openweathermap.org/data/2.5/air_pollution?lat=${selectedOption.latitude}&lon=${selectedOption.longitude}&appid=515feb20d83f656ee0a2bfa9016b585e`
@@ -144,6 +149,8 @@ const AirQualityPage = () => {
                             <CardComponent
                                 country={selectedCountry.label}
                                 aqivalue={aqiValue}
+                                latitude={latitude}
+                                longitude={longitude}
                             ></CardComponent>
                         </div>
                     </div>
