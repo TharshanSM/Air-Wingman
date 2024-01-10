@@ -52,7 +52,7 @@ const CardComponent = ({ country, aqivalue, latitude, longitude }) => {
                 `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitude}&lon=${longitude}&appid=515feb20d83f656ee0a2bfa9016b585e`
             );
             const Data = await Response.json();
-            const List = Data.list.slice(0, 10);
+            const List = Data.list.slice(1, 14);
 
             pdf.addImage(
                 "https://res.cloudinary.com/dvnxc9nsf/image/upload/v1697129342/NC%20Apps/Blue_Simple_LinkedIn_Banner_x9bngs.png",
