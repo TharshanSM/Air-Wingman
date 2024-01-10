@@ -6,6 +6,8 @@ import axios from "axios";
 
 const FeedbackPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         subject: "",
@@ -21,7 +23,7 @@ const FeedbackPage = () => {
 
         try {
             await axios.post("http://localhost:3000/feedback/add", formData);
-            alert("Feedback submitted successfully!");
+            setSuccessMessage("Feedback added successfully");
 
             setFormData({
                 name: "",
@@ -30,6 +32,7 @@ const FeedbackPage = () => {
             });
         } catch (error) {
             console.error("Error submitting feedback:", error);
+            setErrorMessage("Fields cannot be empty");
         }
     };
     return (
@@ -73,6 +76,25 @@ const FeedbackPage = () => {
                 <div className="row">
                     <div className="col">
                         <div>
+                            {errorMessage && (
+                                <div
+                                    className=" mt-3 alert alert-danger alert-dismissible fade show"
+                                    role="alert"
+                                >
+                                    <span className="bi bi-check2-circle"></span>{" "}
+                                    {errorMessage}
+                                </div>
+                            )}
+
+                            {successMessage && (
+                                <div
+                                    className=" mt-3 alert alert-success alert-dismissible fade show"
+                                    role="alert"
+                                >
+                                    <span className="bi bi-check2-circle"></span>{" "}
+                                    {successMessage}
+                                </div>
+                            )}
                             <div className="card card-body mt-3 pt-3">
                                 <form onSubmit={handleSubmit}>
                                     <div className="row mb-3">
