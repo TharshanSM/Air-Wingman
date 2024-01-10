@@ -2,9 +2,36 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 const FeedbackPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        subject: "",
+        feedback: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await axios.post("http://localhost:3000/feedback/add", formData);
+            alert("Feedback submitted successfully!");
+
+            setFormData({
+                name: "",
+                subject: "",
+                feedback: "",
+            });
+        } catch (error) {
+            console.error("Error submitting feedback:", error);
+        }
+    };
     return (
         <body className={isSidebarOpen ? "toggle-sidebar" : ""}>
             <header
@@ -47,7 +74,7 @@ const FeedbackPage = () => {
                     <div className="col">
                         <div>
                             <div className="card card-body mt-3 pt-3">
-                                <form>
+                                <form onSubmit={handleSubmit}>
                                     <div className="row mb-3">
                                         <label
                                             htmlFor="inputText"
@@ -61,6 +88,9 @@ const FeedbackPage = () => {
                                                 className="form-control"
                                                 id="exampleDataList"
                                                 placeholder="Type Your Name Here..."
+                                                name="name"
+                                                value={formData.name}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -77,6 +107,9 @@ const FeedbackPage = () => {
                                                 className="form-control"
                                                 id="exampleDataList"
                                                 placeholder="Type Your Subject Here..."
+                                                name="subject"
+                                                value={formData.subject}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -91,6 +124,9 @@ const FeedbackPage = () => {
                                             <textarea
                                                 className="form-control"
                                                 placeholder="Type Your Feedback Here..."
+                                                name="feedback"
+                                                value={formData.feedback}
+                                                onChange={handleChange}
                                             ></textarea>
                                         </div>
                                     </div>
